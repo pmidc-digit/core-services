@@ -4,6 +4,10 @@ ARG WORK_DIR
 ENV npm_config_cache=/tmp
 WORKDIR /app
 
+RUN apk update && \
+    apk add --no-cache ca-certificates && \
+    update-ca-certificates
+
 COPY ${WORK_DIR} .
 
 RUN npm install
